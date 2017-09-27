@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <TextBlock x:Name="Text"><InlineUIContainer>
+                <Label x:Name="Content" Content="Label"/>
+            </InlineUIContainer></TextBlock>
+
     </Grid>
 </Window>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RestSharp;
 
 namespace Evidence_osob
 {
@@ -23,6 +24,19 @@ namespace Evidence_osob
         public MainWindow()
         {
             InitializeComponent();
+            var client = new RestClient("https://student.sps-prosek.cz/~bastlma14/koment%C3%A1%C5%99e/bastl_databaze.php");
+
+            var request = new RestRequest("", Method.GET);
+
+            //request.AddParameter("token", "saga001", ParameterType.UrlSegment);
+
+            // request.AddUrlSegment("token", "saga001"); 
+
+            request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
+
+            var queryResult = client.Execute(request);
+
+            Content.Content = queryResult.Content;
         }
     }
 }
