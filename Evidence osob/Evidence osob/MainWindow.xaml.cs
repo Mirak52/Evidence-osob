@@ -21,21 +21,20 @@ namespace Evidence_osob
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static List<int> Pole = new List<int>();
         public MainWindow()
         {
             InitializeComponent();
-            var client = new RestClient("https://student.sps-prosek.cz/~bastlma14/koment%C3%A1%C5%99e/bastl_databaze.php");
+            var client = new RestClient("https://student.sps-prosek.cz/~bastlma14/bastl_databaze.php");
+            var request = new RestRequest(Method.POST);
+            string name = "Marek";
+            int sex =0;
+            request.AddParameter("jmeno", name);
+            request.AddParameter("pohlavi", sex);
 
-            var request = new RestRequest("", Method.GET);
-
-            //request.AddParameter("token", "saga001", ParameterType.UrlSegment);
-
-            // request.AddUrlSegment("token", "saga001"); 
-
-            request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
+           request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
             var queryResult = client.Execute(request);
-
             Content.Content = queryResult.Content;
         }
     }
