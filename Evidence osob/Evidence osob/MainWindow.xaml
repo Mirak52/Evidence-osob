@@ -5,11 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Evidence_osob"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        WindowState="Maximized"
+        Title="MainWindow" Height="1080" Width="1920">
     <Grid>
-        <TextBlock x:Name="Text"><InlineUIContainer>
-                <Label x:Name="Content" Content="Label"/>
-            </InlineUIContainer></TextBlock>
+
+        <Label x:Name="Content" Content="Label" Margin="10,10,518,825"/>
+
+        <ListView Margin="0,20,850,0" Name="People">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" Width="200" DisplayMemberBinding="{Binding IdList}" />
+                    <GridViewColumn Header="Jméno" Width="100" DisplayMemberBinding="{Binding NameList}" />
+                    <GridViewColumn Header="Příjmení" Width="550" DisplayMemberBinding="{Binding SurnameList}" />
+                    <GridViewColumn Header="Rodné číslo" Width="550" DisplayMemberBinding="{Binding PersonalNumberList}" />
+                    <GridViewColumn Header="Datum narození" Width="550" DisplayMemberBinding="{Binding DateOfBirthList}" />
+                    <GridViewColumn Header="Pohlaví" Width="550" DisplayMemberBinding="{Binding SexList}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
 
     </Grid>
 </Window>
