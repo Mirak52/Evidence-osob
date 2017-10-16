@@ -11,18 +11,35 @@
 
         <Label x:Name="Content" Content="Label" Margin="10,10,518,825"/>
 
-        <ListView Margin="0,20,850,0" Name="People">
+        <ListView Margin="0,20,1000,0" Name="People">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="200" DisplayMemberBinding="{Binding IdList}" />
-                    <GridViewColumn Header="Jméno" Width="100" DisplayMemberBinding="{Binding NameList}" />
-                    <GridViewColumn Header="Příjmení" Width="550" DisplayMemberBinding="{Binding SurnameList}" />
-                    <GridViewColumn Header="Rodné číslo" Width="550" DisplayMemberBinding="{Binding PersonalNumberList}" />
-                    <GridViewColumn Header="Datum narození" Width="550" DisplayMemberBinding="{Binding DateOfBirthList}" />
-                    <GridViewColumn Header="Pohlaví" Width="550" DisplayMemberBinding="{Binding SexList}" />
+                    <GridViewColumn Header="ID"  DisplayMemberBinding="{Binding id}" />
+                    <GridViewColumn Header="Jméno"  DisplayMemberBinding="{Binding jmeno}" />
+                    <GridViewColumn Header="Příjmení"  DisplayMemberBinding="{Binding prijmeni}" />
+                    <GridViewColumn Header="Rodné číslo"  DisplayMemberBinding="{Binding rodneCislo}" />
+                    <GridViewColumn Header="Datum narození"  DisplayMemberBinding="{Binding datumNarozeni}" />
+                    <GridViewColumn Header="Pohlaví"  DisplayMemberBinding="{Binding pohlavi}" />
                 </GridView>
             </ListView.View>
         </ListView>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="400"   Margin="1230,224,282,125" >
+            <StackPanel.Background>
+                <SolidColorBrush Color="CadetBlue"></SolidColorBrush>
+            </StackPanel.Background>
+            <Label Content="Napiš jméno"></Label>
+            <Label Content=""></Label>
+            <TextBox x:Name="name" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+            <Label Content="Napiš příjmení"></Label>
+            <Label Content=""></Label>
+            <TextBox x:Name="sirName" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+            <GroupBox Height="100" BorderBrush="#00000000"/>
+            <DatePicker x:Name="Date" DisplayDateStart="1900-01-01"></DatePicker>
+            <Button x:Name="save" Content="Button" VerticalAlignment="Top" Width="75" Click="save_Click"/>
+
+        </StackPanel>
+        <RadioButton x:Name="Man" Content="Muž" HorizontalAlignment="Left" IsChecked="True" Margin="1251,594,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Woman" Content="Žena" HorizontalAlignment="Left" Margin="1251,614,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>

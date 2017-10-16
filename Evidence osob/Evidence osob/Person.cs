@@ -13,6 +13,6 @@ namespace Evidence_osob
         public string prijmeni { get; set; }
         public string rodneCislo { get; set; }
         public string datumNarozeni { get; set; }
-        public int pohlavi { get; set; }
+        public string pohlavi { get; set; }
     }
 }

@@ -1,18 +1,7 @@
-﻿using System;
+﻿using RestSharp;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using RestSharp;
 
 namespace Evidence_osob
 {
@@ -26,6 +15,8 @@ namespace Evidence_osob
         {
             InitializeComponent();
             People.ItemsSource = GetPeople();
+            Date.DisplayDateEnd = DateTime.Today;
+            
 
         }
 
@@ -37,9 +28,34 @@ namespace Evidence_osob
 
 
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
-
+            
             var queryResult = res.Data;
+            foreach (var osoba in queryResult)
+            {
+                if (!string.IsNullOrEmpty((osoba.pohlavi = 1.ToString())))
+                {
+                    osoba.pohlavi = "muž";
+
+                }
+                else
+                {
+                    osoba.pohlavi = "žena";
+                }
+            }
             return queryResult;
+
+        }
+
+        private void save_Click(object sender, RoutedEventArgs e)
+        {
+            var client = new RestClient("https://student.sps-prosek.cz/~bastlma14/Evidence/");
+            var request = new RestRequest(Method.POST);
+             
+
+
+
+//            var res = client.Execute(request);
+
 
         }
     }
