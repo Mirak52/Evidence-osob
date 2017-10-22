@@ -33,14 +33,19 @@
             <Label Content="Napiš příjmení"></Label>
             <Label Content=""></Label>
             <TextBox x:Name="sirName" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-            <GroupBox Height="100" BorderBrush="#00000000"/>
-            <DatePicker x:Name="Date" DisplayDateStart="1900-01-01"></DatePicker>
+            <RadioButton x:Name="man" GroupName="sex" Content="Muž" HorizontalAlignment="Left" IsChecked="True"  VerticalAlignment="Top"/>
+            <RadioButton x:Name="woman" GroupName="sex" Content="Žena" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <DatePicker SelectedDateChanged="Date_OnSelectedDateChanged" x:Name="Date" DisplayDateStart="1900-01-01"></DatePicker>
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="rc" Content="RC" ></Label>
+                <TextBlock FontSize="18">/</TextBlock>
+               <TextBox x:Name="rcNumber" Width="80px"></TextBox>
+            </StackPanel>
             <Button x:Name="save" Content="Button" VerticalAlignment="Top" Width="75" Click="save_Click"/>
+            <Label x:Name="Error" Height="20"></Label>
 
         </StackPanel>
-        <RadioButton x:Name="Man" Content="Muž" HorizontalAlignment="Left" IsChecked="True" Margin="1251,594,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="Woman" Content="Žena" HorizontalAlignment="Left" Margin="1251,614,0,0" VerticalAlignment="Top"/>
-
+        
 
     </Grid>
 </Window>
